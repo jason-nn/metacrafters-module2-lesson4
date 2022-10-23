@@ -106,7 +106,12 @@ export async function establishPayer(): Promise<void> {
 
   //Step 3: Requesting an airdrop
 
-  //Insert the Step 3 code from the tutorial here
+  const sig = await connection.requestAirdrop(
+    payer.publicKey,
+    2 * LAMPORTS_PER_SOL,
+  );
+
+  await connection.confirmTransaction(sig);
 
   console.log(
     'Using account',
